@@ -7,7 +7,10 @@ public class Node {
 
     public Node(int value) {
         this.value = value;
-        leftChild = null;
-        rightChild = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Node=" + value;
     }
 }
