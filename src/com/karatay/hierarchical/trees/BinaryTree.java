@@ -113,6 +113,49 @@ public class BinaryTree {
         return Math.max(root.value, Math.max(left, right));
     }
 
+    // finding left most node or leaf
+    public int leftMostNode() {
+        return leftMostNode(root);
+    }
+    private int leftMostNode(Node root) {
+        Node currentNode = root;
+        Node lastNode = currentNode;
+        while (currentNode != null) {
+            lastNode = currentNode;
+            currentNode = currentNode.leftChild;
+        }
+
+        return lastNode.value;
+    }
+
+    public int rightMostNode() {
+        return rightMostNode(root);
+    }
+    private int rightMostNode(Node root) {
+        Node currentNode = root;
+        Node lastNode = currentNode;
+        while (currentNode != null) {
+            lastNode = currentNode;
+            currentNode = currentNode.rightChild;
+        }
+
+        return lastNode.value;
+    }
+
+    public boolean isEqual(BinaryTree other) {
+        return isEqual(root, other.root);
+    }
+    private boolean isEqual(Node first, Node second) {
+        if (first == null && second == null)
+            return true;
+        if (first != null && second != null)
+            return first.value == second.value &&
+                    isEqual(first.leftChild, second.leftChild) &&
+                    isEqual(first.rightChild, second.rightChild);
+
+        return false;
+    }
+
     private boolean isLeafNode(Node root) {
         return root.leftChild == null && root.rightChild == null;
     }
