@@ -19,5 +19,7 @@ public class BinaryTreeRunner {
         System.out.println();
 
         System.out.println("The height of the tree: " + tree.height());
+        System.out.println("min node of the tree: " + tree.minNode());
+        System.out.println("max node of the tree: " + tree.maxNode());
     }
 }

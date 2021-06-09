@@ -82,9 +82,38 @@ public class BinaryTree {
     private int height(Node root) {
         if (root == null)
             return -1;
-        if (root.leftChild == null && root.rightChild == null)
+        if (isLeafNode(root))
             return 0;
 
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
+    }
+
+    public int minNode() {
+        return minNode(root);
+    }
+    private int minNode(Node root) {
+        if (isLeafNode(root)) {
+            return root.value;
+        }
+        int left = minNode(root.leftChild);
+        int right = minNode(root.rightChild);
+
+        return Math.min(root.value, Math.min(left, right));
+    }
+
+    public int maxNode() {
+        return maxNode(root);
+    }
+    private int maxNode(Node root) {
+        if (isLeafNode(root))
+            return root.value;
+        int left = maxNode(root.leftChild);
+        int right = maxNode(root.rightChild);
+
+        return Math.max(root.value, Math.max(left, right));
+    }
+
+    private boolean isLeafNode(Node root) {
+        return root.leftChild == null && root.rightChild == null;
     }
 }
