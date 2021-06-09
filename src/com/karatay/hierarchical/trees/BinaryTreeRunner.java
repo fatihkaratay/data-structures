@@ -16,5 +16,8 @@ public class BinaryTreeRunner {
         tree.traverseInOrder();
         System.out.println();
         tree.traversePostOrder();
+        System.out.println();
+
+        System.out.println("The height of the tree: " + tree.height());
     }
 }
