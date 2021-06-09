@@ -42,4 +42,37 @@ public class BinaryTree {
         }
         return false;
     }
+
+    public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+    private void traversePreOrder(Node root) {
+        if (root == null) return;
+
+        System.out.print(root.value + " ");
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+
+    public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+    private void traverseInOrder(Node root) {
+        if (root == null) return;
+
+        traverseInOrder(root.leftChild);
+        System.out.print(root.value + " ");
+        traverseInOrder(root.rightChild);
+    }
+
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+    private void traversePostOrder(Node root) {
+        if (root == null) return;
+
+        traversePostOrder(root.leftChild);
+        traversePostOrder(root.rightChild);
+        System.out.print(root.value + " ");
+    }
 }

@@ -11,13 +11,10 @@ public class BinaryTreeRunner {
         tree.insert(8);
         tree.insert(10);
 
-        System.out.println(tree.find(7));
-        System.out.println(tree.find(4));
-        System.out.println(tree.find(9));
-        System.out.println(tree.find(1));
-        System.out.println(tree.find(6));
-        System.out.println(tree.find(8));
-        System.out.println(tree.find(10));
-        System.out.println(tree.find(74));
+        tree.traversePreOrder();
+        System.out.println();
+        tree.traverseInOrder();
+        System.out.println();
+        tree.traversePostOrder();
     }
 }
