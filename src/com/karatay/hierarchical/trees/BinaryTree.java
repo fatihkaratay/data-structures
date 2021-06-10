@@ -1,5 +1,8 @@
 package com.karatay.hierarchical.trees;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinaryTree {
     private Node root;
 
@@ -178,6 +181,24 @@ public class BinaryTree {
             System.out.print(root.value + " ");
         printNodesAtDistance(root.leftChild, distance - 1);
         printNodesAtDistance(root.rightChild, distance - 1);
+    }
+
+    public ArrayList<Integer> getNodesAtDistance(int distance) {
+        ArrayList<Integer> list = new ArrayList<>();
+        getNodesAtDistance(root, distance, list);
+
+        return list;
+    }
+    private void getNodesAtDistance(Node root, int distance, ArrayList<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        if (distance == 0) {
+            list.add(root.value);
+        }
+
+        getNodesAtDistance(root.leftChild, distance - 1, list);
+        getNodesAtDistance(root.rightChild, distance - 1, list);
     }
 
     private boolean isLeafNode(Node root) {

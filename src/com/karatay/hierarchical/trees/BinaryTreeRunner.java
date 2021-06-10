@@ -21,9 +21,8 @@ public class BinaryTreeRunner {
         tree2.insert(3);
         tree2.insert(8);
 
-        tree1.printNodesAtDistance(2);
-        System.out.println();
-        tree2.printNodesAtDistance(2);
+        var list = tree1.getNodesAtDistance(3);
+        System.out.println(list);
 
     }
 }
