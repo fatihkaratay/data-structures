@@ -1,7 +1,9 @@
 package com.karatay.hierarchical.trees;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTree {
     private Node root;
@@ -199,6 +201,23 @@ public class BinaryTree {
 
         getNodesAtDistance(root.leftChild, distance - 1, list);
         getNodesAtDistance(root.rightChild, distance - 1, list);
+    }
+
+    public void levelOrderTraverse() {
+        levelOrderTraverse(root);
+    }
+    private void levelOrderTraverse(Node root) {
+        if (root == null)
+            return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            root = q.poll();
+            System.out.print(root.value + " ");
+            if (root.leftChild != null) q.add(root.leftChild);
+            if (root.rightChild != null) q.add(root.rightChild);
+        }
     }
 
     private boolean isLeafNode(Node root) {

@@ -11,18 +11,7 @@ public class BinaryTreeRunner {
         tree1.insert(8);
         tree1.insert(10);
 
-        BinaryTree tree2 = new BinaryTree();
-        tree2.insert(20);
-        tree2.insert(10);
-        tree2.insert(30);
-        tree2.insert(6);
-        tree2.insert(21);
-        tree2.insert(4);
-        tree2.insert(3);
-        tree2.insert(8);
-
-        var list = tree1.getNodesAtDistance(3);
-        System.out.println(list);
+        tree1.levelOrderTraverse();
 
     }
 }
