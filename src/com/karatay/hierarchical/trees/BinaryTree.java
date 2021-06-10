@@ -168,6 +168,18 @@ public class BinaryTree {
                 isBinarySearchTree(root.rightChild, root.value + 1, max);
     }
 
+    public void printNodesAtDistance(int distance) {
+        printNodesAtDistance(root, distance);
+    }
+    private void printNodesAtDistance(Node root, int distance) {
+        if (root == null)
+            return;
+        if (distance == 0 )
+            System.out.print(root.value + " ");
+        printNodesAtDistance(root.leftChild, distance - 1);
+        printNodesAtDistance(root.rightChild, distance - 1);
+    }
+
     private boolean isLeafNode(Node root) {
         return root.leftChild == null && root.rightChild == null;
     }

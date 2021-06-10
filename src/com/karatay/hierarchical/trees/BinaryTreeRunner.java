@@ -21,11 +21,9 @@ public class BinaryTreeRunner {
         tree2.insert(3);
         tree2.insert(8);
 
-        tree1.swapRoot();
-
-        System.out.println(tree1.isBinarySearchTree());
-        System.out.println(tree2.isBinarySearchTree());
-
+        tree1.printNodesAtDistance(2);
+        System.out.println();
+        tree2.printNodesAtDistance(2);
 
     }
 }
