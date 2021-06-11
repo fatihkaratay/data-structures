@@ -11,7 +11,7 @@ public class BinaryTreeRunner {
         tree1.insert(8);
         tree1.insert(10);
 
-        tree1.levelOrderTraverse();
+        System.out.println(tree1.size());
 
     }
 }

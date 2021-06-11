@@ -220,6 +220,15 @@ public class BinaryTree {
         }
     }
 
+    public int size() {
+        return size(root);
+    }
+    private int size(Node root) {
+        if (root == null) return 0;
+
+        return 1 + size(root.leftChild) + size(root.rightChild);
+    }
+
     private boolean isLeafNode(Node root) {
         return root.leftChild == null && root.rightChild == null;
     }
