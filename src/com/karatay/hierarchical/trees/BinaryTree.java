@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class BinaryTree {
+    private int count = 0;
     private Node root;
 
     public void insert(int value) {
@@ -227,6 +228,42 @@ public class BinaryTree {
         if (root == null) return 0;
 
         return 1 + size(root.leftChild) + size(root.rightChild);
+    }
+
+    public void printAncestors(int target) {
+        printAncestors(root, target);
+    }
+    private boolean printAncestors(Node node, int target) {
+        if (node == null)
+            return false;
+
+        if (node.value == target)
+            return true;
+
+        if (printAncestors(node.leftChild, target)
+                || printAncestors(node.rightChild, target)) {
+            System.out.print(node.value + " ");
+            return true;
+        }
+
+        return false;
+    }
+
+    public int countLeaves() {
+        return countLeaves(root);
+    }
+    private int countLeaves(Node root) {
+        if (root == null) return 0;
+
+        if (isLeafNode(root))
+            count++;
+
+        if (root.leftChild != null)
+            countLeaves(root.leftChild);
+        if (root.rightChild !=  null)
+            countLeaves(root.rightChild);
+
+        return count;
     }
 
     private boolean isLeafNode(Node root) {

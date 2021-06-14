@@ -2,16 +2,23 @@ package com.karatay.hierarchical.trees;
 
 public class BinaryTreeRunner {
     public static void main(String[] args) {
-        BinaryTree tree1 = new BinaryTree();
-        tree1.insert(7);
-        tree1.insert(4);
-        tree1.insert(9);
-        tree1.insert(1);
-        tree1.insert(6);
-        tree1.insert(8);
-        tree1.insert(10);
+        BinaryTree tree = constructTree();
 
-        System.out.println(tree1.size());
+        System.out.println(tree.countLeaves());
 
+    }
+
+    private static BinaryTree constructTree() {
+        BinaryTree tree = new BinaryTree();
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(30);
+        tree.insert(6);
+        tree.insert(21);
+        tree.insert(4);
+        tree.insert(3);
+        tree.insert(8);
+
+        return tree;
     }
 }
