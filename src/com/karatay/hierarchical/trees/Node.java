@@ -2,11 +2,21 @@ package com.karatay.hierarchical.trees;
 
 public class Node {
     int value;
-    Node leftChild;
-    Node rightChild;
+    Node left;
+    Node right;
+
+    public Node() {}
 
     public Node(int value) {
         this.value = value;
+    }
+
+    public Node newNode(int data) {
+        Node node = new Node();
+        node.value = data;
+        node.left = node.right = null;
+
+        return (node);
     }
 
     @Override
