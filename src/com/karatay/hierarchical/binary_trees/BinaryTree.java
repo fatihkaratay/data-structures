@@ -1,4 +1,4 @@
-package com.karatay.hierarchical.trees;
+package com.karatay.hierarchical.binary_trees;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
