@@ -2,6 +2,7 @@ package com.karatay.hierarchical.avl_trees;
 
 public class AVLTree {
     private class AVLNode {
+        private int height;
         private int value;
         private AVLNode left;
         private AVLNode right;
@@ -29,6 +30,12 @@ public class AVLTree {
         else
             root.right = insert(root.right, value);
 
+        root.height = Math.max(height(root.left), height(root.left)) + 1;
+
         return root;
+    }
+
+    private int height(AVLNode node) {
+        return node == null ? -1 : node.height;
     }
 }
