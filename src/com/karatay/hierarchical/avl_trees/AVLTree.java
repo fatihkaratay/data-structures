@@ -30,9 +30,34 @@ public class AVLTree {
         else
             root.right = insert(root.right, value);
 
-        root.height = Math.max(height(root.left), height(root.left)) + 1;
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        int balanceFactor = balanceFactor(root);
+
+        root.height = Math.max(leftHeight, rightHeight) + 1;
+
+        if (isLeftHeavy(root))
+            System.out.println(root.value + " is left Heavy");
+        else if (isRightHeavy(root))
+            System.out.println(root.value + " is right heavy");
+        else {
+            System.out.println(root.value + " is balanced");
+        }
 
         return root;
+    }
+
+
+
+    private boolean isLeftHeavy(AVLNode node) {
+        return balanceFactor(node) > 1;
+    }
+    private boolean isRightHeavy(AVLNode node) {
+        return balanceFactor(node) < -1;
+    }
+
+    private int balanceFactor(AVLNode node) {
+        return node == null ? 0 : height(node.left) - height(node.right);
     }
 
     private int height(AVLNode node) {
