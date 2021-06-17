@@ -30,27 +30,53 @@ public class AVLTree {
         else
             root.right = insert(root.right, value);
 
-        int leftHeight = height(root.left);
-        int rightHeight = height(root.right);
-        root.height = Math.max(leftHeight, rightHeight) + 1;
+        setHeight(root);
 
-        balance(root);
+        return balance(root);
+    }
+
+    private AVLNode balance(AVLNode root) {
+        if (isLeftHeavy(root)) {
+            if (balanceFactor(root.left) < 0) {
+                root.left = rotateLeft(root);
+            }
+            return rotateRight(root);
+        } else if (isRightHeavy(root)) {
+            if (balanceFactor(root.right) > 0) {
+                root.right = rotateRight(root);
+            }
+            return rotateLeft(root);
+        }
 
         return root;
     }
 
-    private void balance(AVLNode root) {
-        if (isLeftHeavy(root)) {
-            if (balanceFactor(root.left) < 0) {
-                System.out.println("Left rotate " + root.left.value);
-            }
-            System.out.println("Right rotate " + root.value);
-        } else if (isRightHeavy(root)) {
-            if (balanceFactor(root.right) > 0) {
-                System.out.println("Right rotate " + root.right.value);
-            }
-            System.out.println("Left rotate " + root.value);
-        }
+    private AVLNode rotateLeft(AVLNode root) {
+        AVLNode newRoot = root.right;
+
+        root.right = newRoot.left;
+        newRoot.left = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
+    }
+
+    private AVLNode rotateRight(AVLNode root) {
+        AVLNode newRoot = root.left;
+
+        root.left = newRoot.right;
+        newRoot.right = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
+    }
+
+    private void setHeight(AVLNode node) {
+        node.height = Math.max(height(node.left), height(node.right)) + 1;
     }
 
 
