@@ -11,10 +11,17 @@ public class Heap {
         bubbleUp();
     }
 
-    public void remove() {
+    public int remove() {
         if (isEmpty()) throw new IllegalStateException();
+        int root = items[0];
         items[0] = items[--size];
 
+        bubbleDown();
+
+        return root;
+    }
+
+    private void bubbleDown() {
         int index = 0;
         while (index <= size && !isValidParent(index)) {
             int largerChildIndex = largerChildIndex(index);
