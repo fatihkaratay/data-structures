@@ -28,14 +28,31 @@ public class Heap {
     }
 
     private int largerChildIndex(int index) {
-        return (leftIndex(index) > rightIndex(index)) ?
-                leftIndex(index) :
-                rightIndex(index);
+        if (!hasLeftChild(index))
+            return index;
+        if (!hasRightChild(index))
+            return index;
+
+        return (leftIndex(index) > rightIndex(index)) ? leftIndex(index) : rightIndex(index);
+    }
+
+    private boolean hasLeftChild(int index) {
+        return leftIndex(index) <= size;
+    }
+    private boolean hasRightChild(int index) {
+        return rightIndex(index) <= size;
     }
 
     private boolean isValidParent(int index) {
-        return  items[index] >= leftChild(index) &&
-                items[index] >= rightChild(index);
+        if (!hasLeftChild(index))
+            return true;
+
+        boolean isValid = items[index] >= leftChild(index);
+
+        if (hasRightChild(index))
+            isValid &= items[index] >= rightChild(index);
+
+        return  isValid;
     }
 
     private int rightChild(int index) {
