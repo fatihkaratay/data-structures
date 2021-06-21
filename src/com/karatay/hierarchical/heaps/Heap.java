@@ -98,4 +98,10 @@ public class Heap {
     private int parent(int index) {
         return (index - 1) / 2;
     }
+
+    public int max() {
+        if (isEmpty())
+            throw new IllegalStateException();
+        return items[0];
+    }
 }
