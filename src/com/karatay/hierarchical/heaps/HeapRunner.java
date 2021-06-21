@@ -1,16 +1,11 @@
 package com.karatay.hierarchical.heaps;
 
+import java.util.Arrays;
+
 public class HeapRunner {
     public static void main(String[] args) {
-        int[] numbers = {5, 3, 10, 1, 4, 2};
-        Heap heap = new Heap();
-
-        for (int number : numbers)
-            heap.insert(number);
-
-        while (!heap.isEmpty())
-            System.out.println(heap.remove());
-
-        System.out.println("DONE");
+       int[] numbers = { 5, 3, 8, 4, 1, 2};
+       MaxHeap.heapify(numbers);
+        System.out.println(Arrays.toString(numbers));
     }
 }
