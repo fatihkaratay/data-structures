@@ -4,8 +4,10 @@ public class TrieRunner {
     public static void main(String[] args) {
         Trie trie = new Trie();
         trie.insert("canada");
-//        trie.insert("can");
+        trie.insert("can");
 
-        System.out.println(trie.contains("can"));
+        trie.traversePreOrder();
+        System.out.println();
+        trie.traversePostOrder();
     }
 }
