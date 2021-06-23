@@ -6,10 +6,12 @@ public class DirectedGraphRunner {
         graph.addNode("A");
         graph.addNode("B");
         graph.addNode("C");
+        graph.addNode("D");
         graph.addEdge("A", "B");
+        graph.addEdge("B", "D");
+        graph.addEdge("D", "C");
         graph.addEdge("A", "C");
-        graph.addEdge("B", "C");
-        graph.removeEdge("A", "D");
-        graph.print();
+
+        graph.traverseDFS("A");
     }
 }

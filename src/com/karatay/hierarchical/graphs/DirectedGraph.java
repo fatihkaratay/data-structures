@@ -1,9 +1,6 @@
 package com.karatay.hierarchical.graphs;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DirectedGraph {
     private class Node {
@@ -65,6 +62,21 @@ public class DirectedGraph {
             return;
 
         adjacencyList.get(fromNode).remove(toNode);
+    }
+
+    public void traverseDFS(String root) {
+        Node node = nodes.get(root);
+        if (node == null)
+            return;
+        traverseDFS(node, new HashSet<>());
+    }
+    private void traverseDFS(Node root, Set<Node> visited) {
+        System.out.println(root);
+        visited.add(root);
+
+        for (var node : adjacencyList.get(root))
+            if (!visited.contains(node))
+                traverseDFS(node, visited);
     }
 
 }
