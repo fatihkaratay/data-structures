@@ -12,6 +12,8 @@ public class DirectedGraphRunner {
         graph.addEdge("D", "C");
         graph.addEdge("A", "C");
 
-        graph.traverseDFS("A");
+        graph.traverseDFS_rec("A");
+        System.out.println();
+        graph.traverseDFS_itr("A");
     }
 }

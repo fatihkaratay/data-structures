@@ -1,5 +1,7 @@
 package com.karatay.hierarchical.graphs;
 
+import com.sun.tools.jconsole.JConsoleContext;
+
 import java.util.*;
 
 public class DirectedGraph {
@@ -64,19 +66,46 @@ public class DirectedGraph {
         adjacencyList.get(fromNode).remove(toNode);
     }
 
-    public void traverseDFS(String root) {
+    public void traverseDFS_rec(String root) {
         Node node = nodes.get(root);
         if (node == null)
             return;
-        traverseDFS(node, new HashSet<>());
+        traverseDFS_rec(node, new HashSet<>());
     }
-    private void traverseDFS(Node root, Set<Node> visited) {
-        System.out.println(root);
+    private void traverseDFS_rec(Node root, Set<Node> visited) {
+        System.out.print(root + " ");
         visited.add(root);
 
         for (var node : adjacencyList.get(root))
             if (!visited.contains(node))
-                traverseDFS(node, visited);
+                traverseDFS_rec(node, visited);
+    }
+
+    public void traverseDFS_itr(String root) {
+        Node node = nodes.get(root);
+        if (node == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            if (visited.contains(current))
+                continue;
+
+            System.out.print(current + " ");
+            visited.add(current);
+
+            for (var n : adjacencyList.get(current)) {
+                if (!visited.contains(n))
+                    stack.push(n);
+            }
+        }
+    }
+    private void traverseDFS_itr(Node root, Set<Node> visited) {
+
     }
 
 }
