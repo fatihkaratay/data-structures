@@ -15,7 +15,7 @@ public class DirectedGraph {
 
         @Override
         public String toString() {
-            return "Value=" + label;
+            return label;
         }
     }
     private Map<String, Node> nodes = new HashMap<>();
