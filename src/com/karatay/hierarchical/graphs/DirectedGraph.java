@@ -48,4 +48,23 @@ public class DirectedGraph {
         }
     }
 
+    public void remove (String label) {
+        Node node = nodes.get(label);
+        if (node == null)
+            return;
+        for (var n : adjacencyList.keySet())
+            adjacencyList.get(n).remove(node);
+        adjacencyList.remove(node);
+        nodes.remove(node);
+    }
+
+    public void removeEdge(String from, String to) {
+        Node fromNode = nodes.get(from);
+        Node toNode = nodes.get(to);
+        if (fromNode == null || toNode == null)
+            return;
+
+        adjacencyList.get(fromNode).remove(toNode);
+    }
+
 }
