@@ -104,8 +104,5 @@ public class DirectedGraph {
             }
         }
     }
-    private void traverseDFS_itr(Node root, Set<Node> visited) {
-
-    }
 
 }
