@@ -103,4 +103,28 @@ public class DirectedGraph {
         }
     }
 
+    public void traverseBFS(String root) {
+        Node node = nodes.get(root);
+        if (node == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+
+        while (!q.isEmpty()) {
+            Node current = q.poll();
+            if (visited.contains(current))
+                continue;
+
+            System.out.print(current + " ");
+            visited.add(current);
+
+            for (var n : adjacencyList.get(current))
+                if (!visited.contains(n))
+                    q.add(n);
+        }
+
+    }
+
 }
