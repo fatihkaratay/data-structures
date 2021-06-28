@@ -151,4 +151,42 @@ public class DirectedGraph {
         stack.push(node);
     }
 
+    public boolean hasCycles() {
+        Set<Node> all = new HashSet<>();
+        all.addAll(nodes.values());
+
+        Set<Node> visiting = new HashSet<>();
+        Set<Node> visited = new HashSet<>();
+
+        while (!all.isEmpty()) {
+            // var current = all.toArray(new Node[0])[0];
+            var current = all.iterator().next();
+            if (hasCycle(current, all, visiting, visited))
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean hasCycle(Node node, Set<Node> all, Set<Node> visiting, Set<Node> visited) {
+        all.remove(node);
+        visiting.add(node);
+
+        for (var n : adjacencyList.get(node)) {
+            if (visited.contains(n))
+                continue;
+
+            if (visiting.contains(n))
+                return true;
+
+            if (hasCycle(n, all, visiting, visited))
+                return true;
+        }
+
+        visiting.remove(node);
+        visited.add(node);
+
+        return false;
+    }
+
 }
