@@ -127,4 +127,28 @@ public class DirectedGraph {
 
     }
 
+    public List<String> topologicalSort(String root) {
+        Set<Node> visited = new HashSet<>();
+        Stack<Node> stack = new Stack<>();
+        List<String> list = new ArrayList<>();
+
+        for (var node : nodes.values()) {
+            topologicalSort(node, visited, stack);
+        }
+        while (!stack.empty())
+            list.add(stack.pop().label);
+
+        return list;
+    }
+
+    private void topologicalSort(Node node, Set<Node> visited, Stack<Node> stack) {
+        if (visited.contains(node))
+            return;
+        visited.add(node);
+        for (var n : adjacencyList.get(node))
+            topologicalSort(n, visited, stack);
+
+        stack.push(node);
+    }
+
 }

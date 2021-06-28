@@ -1,17 +1,21 @@
 package com.karatay.hierarchical.graphs;
 
+import java.util.List;
+
 public class DirectedGraphRunner {
     public static void main(String[] args) {
         DirectedGraph graph = new DirectedGraph();
+        graph.addNode("X");
         graph.addNode("A");
         graph.addNode("B");
-        graph.addNode("C");
-        graph.addNode("D");
-        graph.addEdge("A", "B");
-        graph.addEdge("B", "D");
-        graph.addEdge("D", "C");
-        graph.addEdge("A", "C");
+        graph.addNode("P");
 
-        graph.traverseBFS("dsdC");
+        graph.addEdge("X", "A");
+        graph.addEdge("X", "B");
+        graph.addEdge("A", "P");
+        graph.addEdge("B", "P");
+
+        List<String> nodes = graph.topologicalSort("X");
+        System.out.println(nodes);
     }
 }
