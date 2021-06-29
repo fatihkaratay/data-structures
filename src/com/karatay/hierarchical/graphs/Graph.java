@@ -47,6 +47,13 @@ public class Graph {
     }
 
     public void addEdge(String from, String to, int weight) {
+        Node fromNode = nodes.get(from);
+        if (fromNode == null) throw new IllegalArgumentException();
 
+        Node toNode = nodes.get(to);
+        if (toNode == null) throw new IllegalArgumentException();
+
+        adjacencyList.get(fromNode).add(new Edge(fromNode, toNode, weight));
+        adjacencyList.get(toNode).add(new Edge(toNode, fromNode weight));
     }
 }
