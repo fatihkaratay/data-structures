@@ -9,5 +9,7 @@ public class GraphRunner {
 
         graph.addEdge("A", "B", 3);
         graph.addEdge("A", "C", 2);
+
+        graph.print();
     }
 }

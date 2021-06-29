@@ -56,4 +56,13 @@ public class Graph {
         adjacencyList.get(fromNode).add(new Edge(fromNode, toNode, weight));
         adjacencyList.get(toNode).add(new Edge(toNode, fromNode, weight));
     }
+
+    public void print() {
+        for (var source : adjacencyList.keySet()) {
+            List<Edge> targets = adjacencyList.get(source);
+            if (!targets.isEmpty()) {
+                System.out.println(source + " is connected to " + targets);
+            }
+        }
+    }
 }
