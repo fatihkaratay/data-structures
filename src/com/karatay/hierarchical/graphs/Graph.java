@@ -54,6 +54,6 @@ public class Graph {
         if (toNode == null) throw new IllegalArgumentException();
 
         adjacencyList.get(fromNode).add(new Edge(fromNode, toNode, weight));
-        adjacencyList.get(toNode).add(new Edge(toNode, fromNode weight));
+        adjacencyList.get(toNode).add(new Edge(toNode, fromNode, weight));
     }
 }
